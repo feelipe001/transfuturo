@@ -176,21 +176,52 @@
             margin-top: 50px; border: 1px solid #333;
         }
 
-        /* EVA - FAB (COM IMAGEM) */
-        .eva-fab {
+        /* EVA - FAB CONTAINER */
+        .eva-container {
             position: fixed; bottom: 25px; right: 25px;
-            width: 70px; height: 70px; /* Um pouco maior para destacar a imagem */
+            display: flex; align-items: center; z-index: 1000;
+        }
+
+        /* BALÃO DE AJUDA */
+        .eva-tooltip {
+            background: var(--pure-white);
+            color: var(--main-blue);
+            padding: 10px 18px;
+            border-radius: 15px 15px 0 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            margin-right: 15px;
+            white-space: nowrap;
+            animation: fadeInRight 0.8s ease forwards;
+            opacity: 0;
+            pointer-events: none;
+            position: relative;
+        }
+
+        /* Seta do Balão */
+        .eva-tooltip::after {
+            content: '';
+            position: absolute;
+            right: -8px;
+            bottom: 0;
+            width: 0;
+            height: 0;
+            border-left: 10px solid var(--pure-white);
+            border-top: 10px solid transparent;
+        }
+
+        .eva-fab {
+            width: 70px; height: 70px;
             background: var(--pure-white);
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
             cursor: pointer; animation: wiggle 5s infinite;
-            overflow: hidden; /* Corta a imagem em círculo */
+            overflow: hidden;
             border: 2px solid var(--pure-white);
         }
 
-        .eva-fab img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
+        .eva-fab img { width: 100%; height: 100%; object-fit: cover; }
 
         .eva-chat {
             position: fixed; bottom: 105px; right: 25px;
@@ -218,6 +249,7 @@
         /* ANIMAÇÕES */
         @keyframes pulse-red { 0%, 100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.3); opacity: 0.6; } }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInRight { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
         @keyframes wiggle { 0%, 90%, 100% { transform: rotate(0); } 92% { transform: rotate(15deg); } 95% { transform: rotate(-15deg); } 97% { transform: rotate(10deg); } }
         @keyframes pulse-light { 0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); } 100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); } }
 
@@ -291,8 +323,11 @@
         </video>
     </section>
 
-    <div class="eva-fab" onclick="toggleEvaChat()">
-        <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776271115/Gemini_Generated_Image_765zq3765zq3765z_kt14on.png" alt="Assistente Eva">
+    <div class="eva-container">
+        <div class="eva-tooltip" id="evaTooltip">Olá, posso ajudar?</div>
+        <div class="eva-fab" onclick="toggleEvaChat()">
+            <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776271115/Gemini_Generated_Image_765zq3765zq3765z_kt14on.png" alt="Assistente Eva">
+        </div>
     </div>
 
     <div id="evaChat" class="eva-chat">
@@ -312,6 +347,7 @@
         const evaChat = document.getElementById('evaChat');
         const evaResponse = document.getElementById('evaResponse');
         const evaOptions = document.getElementById('evaOptions');
+        const evaTooltip = document.getElementById('evaTooltip');
 
         // VÍDEO 1: FIM E REINÍCIO
         video1.addEventListener('ended', () => { replayOverlay.style.display = 'flex'; });
@@ -409,6 +445,10 @@
         function toggleEvaChat() {
             const isVisible = evaChat.style.display === 'flex';
             evaChat.style.display = isVisible ? 'none' : 'flex';
+            
+            // Esconde o balãozinho quando abre o chat
+            evaTooltip.style.display = isVisible ? 'block' : 'none';
+            
             if(!isVisible) renderEva('inicio');
         }
 
