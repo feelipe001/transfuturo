@@ -80,7 +80,7 @@
             border: 2px solid var(--pure-white); /* Borda branca sólida */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px;
-            position: relative; /* Necessário para posicionar o aviso */
+            position: relative;
             background: #000;
         }
 
@@ -104,7 +104,7 @@
             align-items: center;
             gap: 6px;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            pointer-events: none; /* Garante que o clique passe para o body */
+            pointer-events: none;
             z-index: 10;
         }
 
@@ -128,6 +128,19 @@
             color: var(--pure-white);
             transition: 0.3s ease;
             backdrop-filter: blur(5px);
+            cursor: pointer;
+            position: relative;
+        }
+
+        /* Ícone de seta para botões com submenus */
+        .link-card .chevron {
+            margin-left: auto;
+            font-size: 0.8rem;
+            transition: transform 0.3s ease;
+        }
+
+        .link-card.active .chevron {
+            transform: rotate(180deg);
         }
 
         .link-card:active {
@@ -141,6 +154,37 @@
                 background: var(--pure-white);
                 color: var(--main-blue);
             }
+        }
+
+        /* SUB-BOTÕES (FILIAIS) */
+        .sub-container {
+            display: none; /* Escondido por padrão */
+            flex-direction: column;
+            gap: 8px;
+            padding: 0 10px;
+            margin-top: -4px;
+            margin-bottom: 10px;
+            animation: fadeIn 0.4s ease forwards;
+        }
+
+        .sub-link {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--white-border);
+            padding: 14px 18px;
+            border-radius: 14px;
+            text-decoration: none;
+            color: var(--pure-white);
+            font-size: 0.85rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .sub-link:active {
+            background: var(--pure-white);
+            color: var(--main-blue);
         }
 
         .icon {
@@ -182,6 +226,11 @@
             50% { transform: scale(1.3); opacity: 0.6; }
             100% { transform: scale(1); opacity: 1; }
         }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
@@ -203,13 +252,21 @@
     </div>
 
     <div class="container">
-        <a href="https://wa.me/SEUNUMERO" class="link-card highlight">
+        <div class="link-card highlight" onclick="toggleAtendimento(this)">
             <div class="icon"><i class="fab fa-whatsapp"></i></div>
             <div class="text">
                 <b>Atendimento Direto</b>
-                <span>Fale com nossos consultores agora</span>
+                <span>Escolha a filial mais próxima</span>
             </div>
-        </a>
+            <i class="fas fa-chevron-down chevron"></i>
+        </div>
+
+        <div id="subButtons" class="sub-container">
+            <a href="https://wa.me/SEUNUMERO_BM" class="sub-link"><i class="fab fa-whatsapp"></i> Barra Mansa</a>
+            <a href="https://wa.me/SEUNUMERO_IT" class="sub-link"><i class="fab fa-whatsapp"></i> Itaboraí</a>
+            <a href="https://wa.me/SEUNUMERO_NI" class="sub-link"><i class="fab fa-whatsapp"></i> Nova Iguaçu</a>
+            <a href="https://wa.me/SEUNUMERO_BT" class="sub-link"><i class="fab fa-whatsapp"></i> Barra da Tijuca</a>
+        </div>
 
         <a href="#" class="link-card">
             <div class="icon"><i class="fas fa-truck"></i></div>
@@ -256,16 +313,37 @@
 
         setInterval(atualizarContador, 3000);
 
+        // Lógica para expandir/recolher filiais
+        function toggleAtendimento(elemento) {
+            const subContainer = document.getElementById('subButtons');
+            const isVisible = subContainer.style.display === 'flex';
+            
+            subContainer.style.display = isVisible ? 'none' : 'flex';
+            elemento.classList.toggle('active');
+        }
+
         // Lógica para ativar o som, REINICIAR o vídeo e esconder a frase no primeiro toque
-        document.body.addEventListener('click', function() {
+        document.body.addEventListener('click', function(e) {
+            // Evita reiniciar o vídeo se clicar especificamente nos botões de link
+            if (e.target.closest('.link-card') || e.target.closest('.sub-link')) {
+                const video = document.getElementById('meuVideo');
+                if (video.muted) {
+                    video.muted = false;
+                    video.currentTime = 0;
+                    video.play();
+                    badgeSom.style.display = 'none';
+                }
+                return;
+            }
+
             const video = document.getElementById('meuVideo');
             if (video.muted) {
                 video.muted = false;
-                video.currentTime = 0; // REINICIA DO COMEÇO
+                video.currentTime = 0;
                 video.play();
-                badgeSom.style.display = 'none'; // ESCONDE A FRASE
+                badgeSom.style.display = 'none';
             }
-        }, { once: true });
+        });
     </script>
 
 </body>
