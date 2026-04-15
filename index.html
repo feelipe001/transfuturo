@@ -80,11 +80,32 @@
             border: 2px solid var(--pure-white); /* Borda branca sólida */
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px;
+            position: relative; /* Necessário para posicionar o aviso */
+            background: #000;
         }
 
         video {
             width: 100%;
             display: block;
+        }
+
+        /* AVISO PARA ATIVAR SOM */
+        .sound-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            color: var(--pure-white);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.65rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            pointer-events: none; /* Garante que o clique passe para o body */
+            z-index: 10;
         }
 
         /* LINKS */
@@ -168,7 +189,7 @@
     <header class="header">
         <div class="logo">TRANSFUTURO</div>
         <div class="status">
-            <span></span> PESSOAS ASSISTINDO: <b id="contador">87</b>
+            <span></span> AO VIVO: <b id="contador">87</b>
         </div>
     </header>
 
@@ -176,6 +197,9 @@
         <video id="meuVideo" autoplay loop muted playsinline>
             <source src="https://res.cloudinary.com/dxpygpngo/video/upload/q_auto/f_auto/v1776262042/0415_1_n3ys1a.mp4" type="video/mp4">
         </video>
+        <div class="sound-badge" id="badgeSom">
+            <i class="fas fa-volume-mute"></i> TOQUE PARA OUVIR
+        </div>
     </div>
 
     <div class="container">
@@ -219,6 +243,7 @@
     <script>
         // Lógica do contador de pessoas (50 a 120)
         const contadorElemento = document.getElementById('contador');
+        const badgeSom = document.getElementById('badgeSom');
         let viewers = Math.floor(Math.random() * (120 - 50 + 1)) + 50;
 
         function atualizarContador() {
@@ -231,13 +256,14 @@
 
         setInterval(atualizarContador, 3000);
 
-        // Lógica para ativar o som E REINICIAR o vídeo no primeiro toque
+        // Lógica para ativar o som, REINICIAR o vídeo e esconder a frase no primeiro toque
         document.body.addEventListener('click', function() {
             const video = document.getElementById('meuVideo');
             if (video.muted) {
                 video.muted = false;
                 video.currentTime = 0; // REINICIA DO COMEÇO
                 video.play();
+                badgeSom.style.display = 'none'; // ESCONDE A FRASE
             }
         }, { once: true });
     </script>
