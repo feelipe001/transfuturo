@@ -3,18 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grupo Transfuturo | Link na Bio</title>
+    <title>Grupo Transfuturo | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* PALETA DE CORES SOLICITADA */
+        /* PALETA RESTRITA: APENAS AZUL (#1E4ED8) E BRANCO (#FFFFFF) */
         :root {
-            --brand-blue: #1E4ED8;      /* Azul principal */
-            --bg-top: #0B0F19;         /* Topo/Menu */
-            --bg-main: #111827;        /* Background base */
-            --white: #FFFFFF;          /* Texto principal */
-            --whatsapp-green: #25D366; /* CTA WhatsApp */
-            --text-dim: #9ca3af;       /* Cinza para subtextos */
-            --card-border: rgba(30, 78, 216, 0.2); /* Azul com transparência */
+            --main-blue: #1E4ED8;
+            --pure-white: #FFFFFF;
+            --white-glass: rgba(255, 255, 255, 0.1);
+            --white-border: rgba(255, 255, 255, 0.3);
         }
 
         * {
@@ -22,12 +19,12 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Inter', 'Segoe UI', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
-            background-color: var(--bg-main);
-            background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-main) 100%);
-            color: var(--white);
+            background-color: var(--main-blue); /* Fundo sólido Azul */
+            color: var(--pure-white);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -42,47 +39,45 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 25px;
-            padding: 10px 0;
+            margin-bottom: 30px;
+            padding-top: 10px;
         }
 
-        .logo-text {
-            font-weight: 800;
-            font-size: 1.1rem;
-            letter-spacing: -0.5px;
-            color: var(--white);
+        .logo {
+            font-weight: 900;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
         }
 
-        .status-badge {
+        .status {
+            font-size: 0.7rem;
+            font-weight: 600;
+            border: 1px solid var(--pure-white);
+            padding: 5px 12px;
+            border-radius: 50px;
             display: flex;
             align-items: center;
-            font-size: 0.7rem;
-            background: rgba(30, 78, 216, 0.15);
-            padding: 6px 12px;
-            border-radius: 50px;
-            border: 1px solid var(--brand-blue);
-            color: var(--white);
-            font-weight: 600;
+            gap: 6px;
         }
 
-        .status-badge i {
-            color: var(--brand-blue);
-            font-size: 6px;
-            margin-right: 6px;
-            text-shadow: 0 0 8px var(--brand-blue);
+        .status span {
+            width: 6px;
+            height: 6px;
+            background: var(--pure-white);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--pure-white);
             animation: pulse 1.5s infinite;
         }
 
-        /* VÍDEO PLAYER */
+        /* VÍDEO */
         .video-box {
             width: 100%;
             max-width: 400px;
-            border-radius: 20px;
+            border-radius: 24px;
             overflow: hidden;
-            border: 1px solid var(--card-border);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-            margin-bottom: 25px;
-            background: #000;
+            border: 2px solid var(--pure-white); /* Borda branca sólida */
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
         }
 
         video {
@@ -90,24 +85,8 @@
             display: block;
         }
 
-        /* TEXTOS */
-        .headline {
-            text-align: center;
-            max-width: 400px;
-            margin-bottom: 30px;
-        }
-
-        .headline h1 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            background: linear-gradient(to right, #fff, #9ca3af);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        /* CONTAINER DE LINKS */
-        .links-stack {
+        /* LINKS */
+        .container {
             width: 100%;
             max-width: 400px;
             display: flex;
@@ -115,88 +94,80 @@
             gap: 12px;
         }
 
-        .btn-card {
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid var(--card-border);
-            padding: 16px;
-            border-radius: 16px;
+        .link-card {
+            background: var(--white-glass);
+            border: 1px solid var(--white-border);
+            padding: 20px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             text-decoration: none;
-            color: var(--white);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(8px);
+            color: var(--pure-white);
+            transition: 0.3s ease;
+            backdrop-filter: blur(5px);
         }
 
-        .btn-card:hover {
-            background: rgba(30, 78, 216, 0.1);
-            border-color: var(--brand-blue);
-            transform: translateY(-3px);
+        .link-card:active {
+            transform: scale(0.98);
+            background: var(--pure-white);
+            color: var(--main-blue);
         }
 
-        /* ÍCONES */
-        .icon-wrap {
-            width: 42px;
-            height: 42px;
-            background: rgba(30, 78, 216, 0.1);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 15px;
-            color: var(--brand-blue);
-            font-size: 1.1rem;
+        /* No Desktop o hover funciona, no mobile o feedback é no toque */
+        @media (min-width: 768px) {
+            .link-card:hover {
+                background: var(--pure-white);
+                color: var(--main-blue);
+            }
         }
 
-        .label-wrap b {
+        .icon {
+            font-size: 1.4rem;
+            margin-right: 20px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .text b {
             display: block;
-            font-size: 0.95rem;
-            margin-bottom: 2px;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .label-wrap span {
-            font-size: 0.75rem;
-            color: var(--text-dim);
+        .text span {
+            font-size: 0.8rem;
+            opacity: 0.8;
         }
 
-        /* ESTILO ESPECÍFICO WHATSAPP (VERDE) */
-        .btn-whatsapp {
-            border-color: rgba(37, 211, 102, 0.3);
-            background: linear-gradient(90deg, rgba(37, 211, 102, 0.1) 0%, rgba(17, 24, 39, 1) 100%);
+        /* WHATSAPP COM DESTAQUE (BORDA MAIS GROSSA) */
+        .highlight {
+            border: 2px solid var(--pure-white);
+            background: rgba(255, 255, 255, 0.2);
         }
 
-        .btn-whatsapp:hover {
-            border-color: var(--whatsapp-green);
-            background: rgba(37, 211, 102, 0.15);
-        }
-
-        .btn-whatsapp .icon-wrap {
-            color: var(--whatsapp-green);
-            background: rgba(37, 211, 102, 0.1);
-        }
-
-        /* ANIMAÇÕES */
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.5); opacity: 0.5; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-
+        /* FOOTER */
         .footer {
             margin-top: auto;
-            padding: 40px 0 20px;
-            font-size: 0.65rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            padding: 40px 0;
+            font-size: 0.7rem;
+            font-weight: 700;
+            opacity: 0.6;
+            letter-spacing: 2px;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
         }
     </style>
 </head>
 <body>
 
     <header class="header">
-        <div class="logo-text">TRANSFUTURO</div>
-        <div class="status-badge"><i class="fas fa-circle"></i> ATENDIMENTO ATIVO</div>
+        <div class="logo">TRANSFUTURO</div>
+        <div class="status"><span></span> AO VIVO</div>
     </header>
 
     <div class="video-box">
@@ -205,54 +176,42 @@
         </video>
     </div>
 
-    <div class="headline">
-        <h1>Inovação em Movimento</h1>
-    </div>
-
-    <div class="links-stack">
-        <a href="https://wa.me/SEUNUMERO" class="btn-card btn-whatsapp">
-            <div class="icon-wrap">
-                <i class="fab fa-whatsapp"></i>
-            </div>
-            <div class="label-wrap">
-                <b>Consultoria via WhatsApp</b>
-                <span>Fale com nossos especialistas agora</span>
+    <div class="container">
+        <a href="https://wa.me/SEUNUMERO" class="link-card highlight">
+            <div class="icon"><i class="fab fa-whatsapp"></i></div>
+            <div class="text">
+                <b>Atendimento Direto</b>
+                <span>Fale com nossos consultores agora</span>
             </div>
         </a>
 
-        <a href="#" class="btn-card">
-            <div class="icon-wrap">
-                <i class="fas fa-truck"></i>
-            </div>
-            <div class="label-wrap">
-                <b>Catálogo de Veículos</b>
-                <span>Confira modelos e especificações</span>
+        <a href="#" class="link-card">
+            <div class="icon"><i class="fas fa-truck"></i></div>
+            <div class="text">
+                <b>Veículos Iveco</b>
+                <span>Novos e Seminovos</span>
             </div>
         </a>
 
-        <a href="#" class="btn-card">
-            <div class="icon-wrap">
-                <i class="fas fa-boxes"></i>
-            </div>
-            <div class="label-wrap">
+        <a href="#" class="link-card">
+            <div class="icon"><i class="fas fa-route"></i></div>
+            <div class="text">
                 <b>Soluções Logísticas</b>
-                <span>Eficiência para sua operação B2B</span>
+                <span>Gestão inteligente de cargas</span>
             </div>
         </a>
 
-        <a href="#" class="btn-card">
-            <div class="icon-wrap">
-                <i class="fas fa-tools"></i>
-            </div>
-            <div class="label-wrap">
-                <b>Truck Center Veibam</b>
-                <span>Agende serviços e manutenção</span>
+        <a href="#" class="link-card">
+            <div class="icon"><i class="fas fa-tools"></i></div>
+            <div class="text">
+                <b>Truck Center</b>
+                <span>Peças e Manutenção Veibam</span>
             </div>
         </a>
     </div>
 
     <footer class="footer">
-        © 2026 Grupo Transfuturo | PubliX Maker
+        GRUPO TRANSFUTURO © 2026
     </footer>
 
 </body>
