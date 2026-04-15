@@ -6,6 +6,7 @@
     <title>Grupo Transfuturo | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* PALETA RESTRITA: APENAS AZUL (#1E4ED8) E BRANCO (#FFFFFF) */
         :root {
             --main-blue: #1E4ED8;
             --pure-white: #FFFFFF;
@@ -29,7 +30,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding: 20px 0; /* Ajustado para as sessões */
+            padding: 20px;
             overflow-x: hidden;
         }
 
@@ -41,7 +42,7 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 30px;
-            padding: 10px 20px 0 20px;
+            padding-top: 10px;
         }
 
         .logo { font-weight: 900; font-size: 1.1rem; letter-spacing: 1px; }
@@ -59,9 +60,9 @@
             animation: pulse-red 1.5s infinite;
         }
 
-        /* VÍDEO SESSÃO 1 */
+        /* VÍDEO */
         .video-box {
-            width: calc(100% - 40px); max-width: 400px;
+            width: 100%; max-width: 400px;
             border-radius: 24px; overflow: hidden;
             border: 2px solid var(--pure-white);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -80,11 +81,11 @@
             pointer-events: none; z-index: 10;
         }
 
-        /* CONTAINER LINKS SESSÃO 1 */
+        /* LINKS */
         .container {
-            width: calc(100% - 40px); max-width: 400px;
+            width: 100%; max-width: 400px;
             display: flex; flex-direction: column; gap: 12px;
-            margin-bottom: 50px;
+            margin-bottom: 100px;
         }
 
         .link-card {
@@ -116,86 +117,7 @@
         .text span { font-size: 0.8rem; opacity: 0.8; }
         .highlight { border: 2px solid var(--pure-white); background: rgba(255, 255, 255, 0.2); }
 
-        /* --- SEGUNDA SESSÃO: CONSÓRCIO (FUNDO PRETO) --- */
-        .sessao-consorcio {
-            width: 100%;
-            background-color: #000;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 60px 20px;
-            margin-top: 20px;
-        }
-
-        .sessao-consorcio h2 {
-            font-size: 1.8rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            margin-bottom: 30px;
-            text-align: center;
-            color: var(--pure-white);
-        }
-
-        /* SLIDER AUTOMÁTICO IMERSIVO */
-        .slider-wrapper {
-            width: 100%;
-            max-width: 400px;
-            height: 250px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            margin-bottom: 20px;
-            border: 1px solid #333;
-        }
-
-        .slider-content {
-            display: flex;
-            width: 400%; /* 4 imagens */
-            height: 100%;
-            animation: slide-auto 16s infinite ease-in-out;
-        }
-
-        .slider-content img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        @keyframes slide-auto {
-            0%, 20% { transform: translateX(0); }
-            25%, 45% { transform: translateX(-25%); }
-            50%, 70% { transform: translateX(-50%); }
-            75%, 95% { transform: translateX(-75%); }
-            100% { transform: translateX(0); }
-        }
-
-        .img-fixa {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-        }
-
-        .texto-promo {
-            max-width: 400px;
-            text-align: center;
-            line-height: 1.6;
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        .texto-promo b { color: var(--pure-white); font-size: 1.1rem; }
-        .texto-promo .destaque-azul { color: var(--main-blue); font-weight: 800; }
-
-        .video-consorcio {
-            width: 100%;
-            max-width: 400px;
-            border-radius: 20px;
-            margin-top: 40px;
-            border: 1px solid #333;
-        }
-
-        /* EVA - SISTEMA */
+        /* EVA - CHAT SISTEMA */
         .eva-fab {
             position: fixed; bottom: 25px; right: 25px;
             width: 65px; height: 65px; background: var(--pure-white);
@@ -203,6 +125,7 @@
             box-shadow: 0 10px 25px rgba(0,0,0,0.3); z-index: 1000;
             cursor: pointer; animation: wiggle 5s infinite;
         }
+
         .eva-fab i { color: var(--main-blue); font-size: 1.8rem; }
 
         .eva-chat {
@@ -231,7 +154,7 @@
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes wiggle { 0%, 90%, 100% { transform: rotate(0); } 92% { transform: rotate(15deg); } 95% { transform: rotate(-15deg); } 97% { transform: rotate(10deg); } }
 
-        .footer { padding: 40px 0; font-size: 0.7rem; font-weight: 700; opacity: 0.6; letter-spacing: 2px; text-align: center; width: 100%; background: #000; }
+        .footer { padding: 40px 0; font-size: 0.7rem; font-weight: 700; opacity: 0.6; letter-spacing: 2px; }
     </style>
 </head>
 <body>
@@ -271,47 +194,17 @@
         <a href="#" class="link-card"><div class="icon"><i class="fas fa-tools"></i></div><div class="text"><b>Truck Center</b><span>Peças e Manutenção Veibam</span></div></a>
     </div>
 
-    <section class="sessao-consorcio">
-        <h2>Viaje para Santiago, Chile</h2>
-        
-        <div class="slider-wrapper">
-            <div class="slider-content">
-                <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776269015/pexels-ale-zuniga-23778342-7410250_cclvv5.jpg" alt="Santiago 1">
-                <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776269009/beautiful-shot-snowy-mountain-with-clear-blue-sky_viowlw.jpg" alt="Santiago 2">
-                <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776269009/pexels-csaba-marosi-2147694429-29713911_pgxzzg.jpg" alt="Santiago 3">
-                <img src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776269009/pexels-matheusnatan-19739069_cuz8mt.jpg" alt="Santiago 4">
-            </div>
-        </div>
-
-        <img class="img-fixa" src="https://res.cloudinary.com/dxpygpngo/image/upload/v1776269724/641818543_18093904076001190_6642328019919283402_n_mhmb7e.jpg" alt="Consórcio Iveco">
-
-        <div class="texto-promo">
-            <p>Ao adquirir <span class="destaque-azul">R$ 1.100.000,00</span> em cotas do Consórcio Iveco - Grupo 2569, você garante uma viagem internacional com acompanhante para Santiago, no Chile.</p>
-            <br>
-            <p><b>Sem sorteio. Comprou, ganhou.</b></p>
-            <br>
-            <p>Prepare-se para viver dias inesquecíveis na capital chilena: conhecer a imponente Cordilheira dos Andes, visitar o Palácio de La Moneda, explorar o charmoso Barrio Lastarria, admirar a vista do alto do Cerro San Cristóbal e ainda saborear a tradicional gastronomia e vinhos renomados da região.</p>
-            <br>
-            <p style="color: var(--live-red); font-weight: 800;">⚠️ Vagas limitadas - apenas 200 clientes</p>
-            <br>
-            <p>Garanta sua cota e viva essa experiência internacional.<br>
-            <b>Rota Premiada Consórcio IVECO.</b><br>
-            Seu investimento te leva mais longe.</p>
-        </div>
-
-        <video class="video-consorcio" controls loop playsinline>
-            <source src="https://res.cloudinary.com/dxpygpngo/video/upload/v1776269660/SaveClip.App_AQP-35FqizMVoDXNsR7M-J-OgzWGETdZz4i5gMbhP9pUY7-JSfx_lh59dTWEt4YD2ZJi23LdFdlEALKb4e5VBW9rBFV_m78SucNv37E_dqj5uf.mp4" type="video/mp4">
-        </video>
-    </section>
-
     <div class="eva-fab" onclick="toggleEvaChat()">
         <i class="fas fa-robot"></i>
     </div>
 
     <div id="evaChat" class="eva-chat">
         <h3><i class="fas fa-robot"></i> Assistente Eva</h3>
-        <div id="evaResponse" class="eva-msg">Olá! Sou a Eva. Como posso ajudar você hoje?</div>
-        <div id="evaOptions" class="eva-options"></div>
+        <div id="evaResponse" class="eva-msg">
+            Olá! Sou a Eva. Como posso ajudar você hoje?
+        </div>
+        <div id="evaOptions" class="eva-options">
+            </div>
     </div>
 
     <footer class="footer">GRUPO TRANSFUTURO © 2026</footer>
@@ -324,6 +217,7 @@
         const evaResponse = document.getElementById('evaResponse');
         const evaOptions = document.getElementById('evaOptions');
 
+        // FUNIL DE CONTINUIDADE DA EVA
         const fluxos = {
             inicio: {
                 msg: "Olá! Sou a Eva. Como posso ajudar você hoje?",
@@ -384,11 +278,19 @@
             const fluxo = fluxos[passo];
             evaResponse.innerText = fluxo.msg;
             evaOptions.innerHTML = "";
+            
             fluxo.opcoes.forEach(opt => {
                 const btn = document.createElement("button");
                 btn.className = "eva-btn";
                 btn.innerHTML = `${opt.texto} <i class="fas fa-chevron-right" style="font-size:0.6rem; opacity:0.5;"></i>`;
-                btn.onclick = () => opt.link ? window.open(opt.link, '_blank') : renderEva(opt.acao);
+                
+                btn.onclick = () => {
+                    if(opt.link) {
+                        window.open(opt.link, '_blank');
+                    } else {
+                        renderEva(opt.acao);
+                    }
+                };
                 evaOptions.appendChild(btn);
             });
         }
@@ -398,6 +300,8 @@
             evaChat.style.display = isVisible ? 'none' : 'flex';
             if(!isVisible) renderEva('inicio');
         }
+
+        // --- MANUTENÇÃO DOS CÓDIGOS ORIGINAIS ---
 
         let viewers = Math.floor(Math.random() * 71) + 50;
         setInterval(() => {
@@ -412,10 +316,11 @@
             elemento.classList.toggle('active');
         }
 
+        // Lógica Global de Som e RESTART do vídeo
         document.body.addEventListener('click', function(e) {
             if (video.muted) {
                 video.muted = false;
-                video.currentTime = 0;
+                video.currentTime = 0; // REINICIA DO COMEÇO
                 video.play();
                 badgeSom.style.display = 'none';
             }
