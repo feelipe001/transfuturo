@@ -6,11 +6,10 @@
     <title>Grupo Transfuturo | Links</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* PALETA RESTRITA: APENAS AZUL (#1E4ED8) E BRANCO (#FFFFFF) */
         :root {
             --main-blue: #1E4ED8;
             --pure-white: #FFFFFF;
-            --live-red: #FF0000; /* Cor para o ponto de Live */
+            --live-red: #FF0000;
             --white-glass: rgba(255, 255, 255, 0.1);
             --white-border: rgba(255, 255, 255, 0.3);
         }
@@ -24,7 +23,7 @@
         }
 
         body {
-            background-color: var(--main-blue); /* Fundo sólido Azul */
+            background-color: var(--main-blue);
             color: var(--pure-white);
             display: flex;
             flex-direction: column;
@@ -33,7 +32,6 @@
             padding: 20px;
         }
 
-        /* HEADER */
         .header {
             width: 100%;
             max-width: 400px;
@@ -44,11 +42,7 @@
             padding-top: 10px;
         }
 
-        .logo {
-            font-weight: 900;
-            font-size: 1.2rem;
-            letter-spacing: 1px;
-        }
+        .logo { font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; }
 
         .status {
             font-size: 0.7rem;
@@ -61,7 +55,6 @@
             gap: 6px;
         }
 
-        /* PONTO PULSANTE VERMELHO */
         .status span {
             width: 7px;
             height: 7px;
@@ -71,23 +64,37 @@
             animation: pulse-red 1.5s infinite;
         }
 
-        /* VÍDEO */
+        /* VÍDEO BOX */
         .video-box {
             width: 100%;
             max-width: 400px;
             border-radius: 24px;
             overflow: hidden;
-            border: 2px solid var(--pure-white); /* Borda branca sólida */
+            border: 2px solid var(--pure-white);
             box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
             margin-bottom: 30px;
+            position: relative;
+            background: #000;
+            cursor: pointer;
         }
 
-        video {
-            width: 100%;
-            display: block;
+        video { width: 100%; display: block; }
+
+        /* AVISO DE SOM */
+        .sound-badge {
+            position: absolute;
+            bottom: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
-        /* LINKS */
         .container {
             width: 100%;
             max-width: 400px;
@@ -115,46 +122,12 @@
             color: var(--main-blue);
         }
 
-        @media (min-width: 768px) {
-            .link-card:hover {
-                background: var(--pure-white);
-                color: var(--main-blue);
-            }
-        }
+        .icon { font-size: 1.4rem; margin-right: 20px; width: 24px; text-align: center; }
+        .text b { display: block; font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .text span { font-size: 0.8rem; opacity: 0.8; }
+        .highlight { border: 2px solid var(--pure-white); background: rgba(255, 255, 255, 0.2); }
 
-        .icon {
-            font-size: 1.4rem;
-            margin-right: 20px;
-            width: 24px;
-            text-align: center;
-        }
-
-        .text b {
-            display: block;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .text span {
-            font-size: 0.8rem;
-            opacity: 0.8;
-        }
-
-        .highlight {
-            border: 2px solid var(--pure-white);
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* FOOTER */
-        .footer {
-            margin-top: auto;
-            padding: 40px 0;
-            font-size: 0.7rem;
-            font-weight: 700;
-            opacity: 0.6;
-            letter-spacing: 2px;
-        }
+        .footer { margin-top: auto; padding: 40px 0; font-size: 0.7rem; font-weight: 700; opacity: 0.6; letter-spacing: 2px; }
 
         @keyframes pulse-red {
             0% { transform: scale(1); opacity: 1; }
@@ -168,78 +141,61 @@
     <header class="header">
         <div class="logo">TRANSFUTURO</div>
         <div class="status">
-            <span></span> PESSOAS ASSISTINDO: <b id="contador">87</b>
+            <span></span> AO VIVO: <b id="contador">87</b>
         </div>
     </header>
 
-    <div class="video-box">
-        <video id="meuVideo" autoplay loop playsinline>
+    <div class="video-box" onclick="toggleSom()">
+        <video id="meuVideo" autoplay loop muted playsinline>
             <source src="https://res.cloudinary.com/dxpygpngo/video/upload/q_auto/f_auto/v1776262042/0415_1_n3ys1a.mp4" type="video/mp4">
         </video>
+        <div class="sound-badge" id="badgeSom">
+            <i class="fas fa-volume-mute"></i> TOQUE PARA OUVIR
+        </div>
     </div>
 
     <div class="container">
         <a href="https://wa.me/SEUNUMERO" class="link-card highlight">
             <div class="icon"><i class="fab fa-whatsapp"></i></div>
-            <div class="text">
-                <b>Atendimento Direto</b>
-                <span>Fale com nossos consultores agora</span>
-            </div>
+            <div class="text"><b>Atendimento Direto</b><span>Fale com nossos consultores agora</span></div>
         </a>
-
         <a href="#" class="link-card">
             <div class="icon"><i class="fas fa-truck"></i></div>
-            <div class="text">
-                <b>Veículos Iveco</b>
-                <span>Novos e Seminovos</span>
-            </div>
+            <div class="text"><b>Veículos Iveco</b><span>Novos e Seminovos</span></div>
         </a>
-
         <a href="#" class="link-card">
             <div class="icon"><i class="fas fa-route"></i></div>
-            <div class="text">
-                <b>Soluções Logísticas</b>
-                <span>Gestão inteligente de cargas</span>
-            </div>
-        </a>
-
-        <a href="#" class="link-card">
-            <div class="icon"><i class="fas fa-tools"></i></div>
-            <div class="text">
-                <b>Truck Center</b>
-                <span>Peças e Manutenção Veibam</span>
-            </div>
+            <div class="text"><b>Soluções Logísticas</b><span>Gestão inteligente de cargas</span></div>
         </a>
     </div>
 
-    <footer class="footer">
-        GRUPO TRANSFUTURO © 2026
-    </footer>
+    <footer class="footer">GRUPO TRANSFUTURO © 2026</footer>
 
     <script>
-        // Lógica do contador de pessoas (50 a 120)
+        const video = document.getElementById('meuVideo');
+        const badge = document.getElementById('badgeSom');
+
+        // Função para ativar o som
+        function toggleSom() {
+            if (video.muted) {
+                video.muted = false;
+                badge.innerHTML = '<i class="fas fa-volume-up"></i> SOM ATIVADO';
+                setTimeout(() => { badge.style.display = 'none'; }, 2000);
+            }
+        }
+
+        // Contador de pessoas
         const contadorElemento = document.getElementById('contador');
         let viewers = Math.floor(Math.random() * (120 - 50 + 1)) + 50;
 
         function atualizarContador() {
-            // Flutuação de -3 a +3 pessoas
             const mudanca = Math.floor(Math.random() * 7) - 3;
             viewers += mudanca;
-
-            // Travas de segurança
             if (viewers < 50) viewers = 55;
             if (viewers > 120) viewers = 115;
-
             contadorElemento.innerText = viewers;
         }
-
         setInterval(atualizarContador, 3000);
-
-        // Lógica para ativar o som após o primeiro clique (exigência dos navegadores)
-        document.body.addEventListener('click', function() {
-            const video = document.getElementById('meuVideo');
-            video.muted = false;
-        }, { once: true });
     </script>
 
 </body>
