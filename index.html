@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grupo Transfuturo | Link na Bio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* VARIÁVEIS DE COR - Altere aqui para cada empresa */
+        :root {
+            --bg-color: #0d0d0d;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --neon-color: #00f3ff; /* Azul para Transfuturo / Verde: #39ff14 / Laranja: #ff6600 */
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        .header {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            font-size: 0.7rem;
+            background: rgba(0, 243, 255, 0.1);
+            padding: 5px 10px;
+            border-radius: 20px;
+            border: 1px solid var(--neon-color);
+            color: var(--neon-color);
+        }
+
+        .status span {
+            width: 6px;
+            height: 6px;
+            background: var(--neon-color);
+            border-radius: 50%;
+            margin-right: 6px;
+            box-shadow: 0 0 10px var(--neon-color);
+            animation: pulse 1.5s infinite;
+        }
+
+        /* VÍDEO CONTAINER */
+        .video-container {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            display: block;
+        }
+
+        /* HEADLINE */
+        .headline {
+            text-align: center;
+            max-width: 400px;
+            margin-bottom: 25px;
+        }
+
+        .headline h1 {
+            font-size: 1.4rem;
+            margin-bottom: 8px;
+        }
+
+        .headline p {
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        /* BOTÕES / CARDS */
+        .links-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .action-card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 18px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            color: white;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .action-card:hover {
+            border-color: var(--neon-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 243, 255, 0.1);
+        }
+
+        .icon-box {
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            color: var(--neon-color);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .text-box b {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 2px;
+        }
+
+        .text-box span {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+        }
+
+        /* DESTAQUE NO WHATSAPP */
+        .featured {
+            border-color: rgba(0, 243, 255, 0.3);
+            background: linear-gradient(90deg, rgba(0, 243, 255, 0.05) 0%, rgba(13, 13, 13, 1) 100%);
+            animation: glow-pulse 3s infinite;
+        }
+
+        /* FOOTER */
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            padding-bottom: 20px;
+        }
+
+        /* ANIMAÇÕES */
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes glow-pulse {
+            0% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.1); }
+            50% { box-shadow: 0 0 20px rgba(0, 243, 255, 0.2); }
+            100% { box-shadow: 0 0 5px rgba(0, 243, 255, 0.1); }
+        }
+
+        /* RESPONSIVIDADE */
+        @media (max-width: 370px) {
+            .headline h1 { font-size: 1.2rem; }
+            .action-card { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="logo">Transfuturo</div>
+        <div class="status"><span></span> Atendimento Online</div>
+    </header>
+
+    <div class="video-container">
+        <video autoplay muted loop playsinline>
+            <source src="apresentação.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <section class="headline">
+        <h1>Excelência em Logística</h1>
+        <p>Soluções inteligentes para o seu negócio.</p>
+    </section>
+
+    <div class="links-container">
+        <a href="https://wa.me/SEUNUMERO" class="action-card featured">
+            <div class="icon-box">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div class="text-box">
+                <b>Falar com Consultor</b>
+                <span>Inicie um orçamento agora via WhatsApp</span>
+            </div>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="icon-box">
+                <i class="fas fa-truck-loading"></i>
+            </div>
+            <div class="text-box">
+                <b>Nossos Serviços</b>
+                <span>Conheça as soluções da Transfuturo Logística</span>
+            </div>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="icon-box">
+                <i class="fas fa-file-pdf"></i>
+            </div>
+            <div class="text-box">
+                <b>Apresentação Comercial</b>
+                <span>Baixe o nosso portfólio completo</span>
+            </div>
+        </a>
+
+        <a href="#" class="action-card">
+            <div class="icon-box">
+                <i class="fas fa-map-marker-alt"></i>
+            </div>
+            <div class="text-box">
+                <b>Localização</b>
+                <span>Veja onde estamos no Google Maps</span>
+            </div>
+        </a>
+    </div>
+
+    <footer class="footer">
+        <p>© 2026 Grupo Transfuturo • PubliX Maker AI</p>
+    </footer>
+
+</body>
+</html>
